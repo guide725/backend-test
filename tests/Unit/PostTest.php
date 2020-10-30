@@ -14,7 +14,7 @@ class PostTest extends TestCase
             $response = $this->json('GET','/posts');
             $response->assertStatus(200)
                 ->assertJson([
-                    'status' => true,
+                    'status' => true ,
             ]);
         }
         /** @test */
