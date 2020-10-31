@@ -1,3 +1,13 @@
+<p> To use docker </p>
+<ul>
+    <li>cd backend-test/laradock</li>
+    <li><b>command</b> docker-compose up -d nginx mysql phpmyadmin workspace </li>
+    <li><b>command</b> docker-compose exec workspace bash</li>
+    <li><b>command</b> php artisan test (To Unit test)</li>
+</ul>
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
