@@ -2,9 +2,9 @@
 <ul>
     <li>cd backend-test/laradock</li>
     <li><b>command : </b> cp env-example .env </li>
-    <li><b>command : </b> docker-compose up -d nginx mysql phpmyadmin workspace </li>
-    <li><b>command : </b> docker-compose exec workspace bash</li>
-    <li><b>command (To Unit test) : </b> php artisan test </li>
+    <li><b>command : </b> docker-compose up -d  </li>
+    <li><b>command : </b> docker-compose exec app bash</li>
+    <li><b>command (To run Unit test) : </b> php artisan test </li>
 </ul>
 
 
