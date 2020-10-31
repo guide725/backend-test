@@ -20,7 +20,7 @@ class PostTest extends TestCase
         /** @test */
         public function showPost_published_haveP()
         {
-            $response = $this->json('GET','/posts',['p'=>3]);
+            $response = $this->json('GET','/posts',['p'=>2]);
             $response->assertStatus(200)
                 ->assertJson([
                     'status' => true,
@@ -43,8 +43,8 @@ class PostTest extends TestCase
                 'X-Header' => 'Value',
             ])->json('POST','/posts',
                         ['title'=>'POST#TEST',
-                        'content'=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit." , 
-                        "author"=>'Mr.G' , 
+                        'content'=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit." ,
+                        "author"=>'Mr.G' ,
                         "published"=>"0"]);
             $response->assertStatus(401)
                 ->assertJson([
@@ -55,36 +55,36 @@ class PostTest extends TestCase
         /** @test */
         public function createPost_Have_jwt()
         {
-            $user = Creator::where('username',"mohr5")->first();
+            $user = Creator::where('username',"ankunding2")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
                 'Authorization' => 'Bearer '. $token,
             ])->json('POST','/posts',
                         ['title'=>'POST#TEST',
-                        'content'=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit." , 
-                        "author"=>'Mr.G' , 
+                        'content'=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit." ,
+                        "author"=>'Mr.G' ,
                         "published"=>"0"]);
             $response->assertStatus(201)
                 ->assertJson([
-                    "status"=>true , 
+                    "status"=>true ,
                     "message"=>"create success"
                 ]);
         }
         /** @test */
         public function createPost_Have_jwt_TitleLen_lessthan3()
         {
-            $user = Creator::where('username',"mohr5")->first();
+            $user = Creator::where('username',"ankunding2")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
         ])->json('POST','/posts',
                         ['title'=>'PO',
-                        'content'=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit." , 
-                        "author"=>'Mr.G' , 
+                        'content'=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit." ,
+                        "author"=>'Mr.G' ,
                         "published"=>"0"]);
             $response->assertStatus(400)
                 ->assertJson([
-                    "status"=>false , 
+                    "status"=>false ,
                     "message"=> ["title" => [
                         "The title must be at least 3 characters."
                     ]]
@@ -93,18 +93,18 @@ class PostTest extends TestCase
         /** @test */
         public function createPost_Have_jwt_contentLen_lessthan3()
         {
-            $user = Creator::where('username',"mohr5")->first();
+            $user = Creator::where('username',"ankunding2")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
                 'Authorization' => 'Bearer '. $token,
             ])->json('POST','/posts',
                         ['title'=>'POST#TEST',
-                        'content'=>"t." , 
-                        "author"=>'Mr.G' , 
+                        'content'=>"t." ,
+                        "author"=>'Mr.G' ,
                         "published"=>"0"]);
             $response->assertStatus(400)
                 ->assertJson([
-                    "status"=>false , 
+                    "status"=>false ,
                     "message"=> ["content" => [
                         "The content must be at least 3 characters."
                     ]]
@@ -113,33 +113,33 @@ class PostTest extends TestCase
         /** @test */
         public function publishPost_Have_No_jwt()
         {
-            $response = $this->json('GET','/posts/'.'3'.'/publish');
+            $response = $this->json('GET','/posts/'.'32'.'/publish');
             $response->assertStatus(401)
                 ->assertJson([
                     "status"=> false,
                     "message"=> "Unauthorized"
-                    
+
                 ]);
         }
         /** @test */
         public function publishPost_Have_jwt()
         {
-            $user = Creator::where('username',"mohr5")->first();
+            $user = Creator::where('username',"ankunding2")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
                 'Authorization' => 'Bearer '. $token,
-            ])->json('GET','/posts/'.'3'.'/publish');
+            ])->json('GET','/posts/'.'32'.'/publish');
             $response->assertStatus(200)
                 ->assertJson([
                     "status"=> true,
                     "message"=> "publish success"
-                    
+
                 ]);
         }
         /** @test */
         public function publishPost_Have_jwt_No_Data()
         {
-            $user = Creator::where('username',"mohr5")->first();
+            $user = Creator::where('username',"ankunding2")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
                 'Authorization' => 'Bearer '. $token,

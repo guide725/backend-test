@@ -25,7 +25,7 @@ class PostFactory extends Factory
             'title' => 'POST#'.$this->faker->randomDigit(),
             'content' => $this->faker->text($maxNbChars = 200),
             'author' => $this->faker->name,
-            'published' => false,
+            'published' => $this->faker->numberBetween($min = 0, $max = 1)
         ];
     }
 }
