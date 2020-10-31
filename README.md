@@ -1,6 +1,6 @@
 <p> To use docker </p>
 <ul>
-    <li>cd backend-test/laradock</li>
+    <li>cd backend-testk</li>
     <li><b>command : </b> cp env-example .env </li>
     <li><b>command : </b> docker-compose up -d  </li>
     <li><b>command : </b> docker-compose exec app bash</li>
