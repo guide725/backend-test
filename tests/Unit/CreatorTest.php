@@ -10,7 +10,7 @@ class CreatorTest extends TestCase
     /** @test */
     public function Login_Success()
     {
-        $response = $this->json('POST','login',['username'=>"guide725",'password'=>"123456"]);
+        $response = $this->json('POST','login',['username'=>"mohr5",'password'=>"123456"]);
         $response->assertStatus(200)
                     ->assertJsonStructure(["response","token"])
                     ->assertJson(["status"=>true,
@@ -38,7 +38,7 @@ class CreatorTest extends TestCase
     /** @test */
     public function Login_Failed_with_password_lessthan6()
     {
-        $response = $this->json('POST','login',['username'=>"guide725",'password'=>"123"]);
+        $response = $this->json('POST','login',['username'=>"mohr5",'password'=>"123"]);
         $response->assertStatus(400)
                     ->assertJson(["status" => false,
                                     "message"=> ["password"=> [
@@ -48,7 +48,7 @@ class CreatorTest extends TestCase
     /** @test */
     public function Logout_success_with_jwt()
     {
-        $user = Creator::where('username',"guide725")->first();
+        $user = Creator::where('username',"mohr5")->first();
         $token = JWTAuth::fromUser($user);
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
@@ -70,7 +70,7 @@ class CreatorTest extends TestCase
     /** @test */
     public function Logout_failed_with_jwt_expired_or_jwt_notcorrect()
     {
-        $user = Creator::where('username',"guide725")->first();
+        $user = Creator::where('username',"mohr5")->first();
         $token = JWTAuth::fromUser($user);
         $token = $token."adfdsfa";
         $response = $this->withHeaders([
@@ -85,7 +85,7 @@ class CreatorTest extends TestCase
     /** @test */
     public function RefreshToken_success_with_jwt()
     {
-        $user = Creator::where('username',"guide725")->first();
+        $user = Creator::where('username',"mohr5")->first();
         $token = JWTAuth::fromUser($user);
         $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
@@ -107,7 +107,7 @@ class CreatorTest extends TestCase
     /** @test */
     public function RefreshToken_failed_with_jwt_expired_or_jwt_notcorrect()
     {
-        $user = Creator::where('username',"guide725")->first();
+        $user = Creator::where('username',"mohr5")->first();
         $token = JWTAuth::fromUser($user);
         $token = $token."adfdsfa";
         $response = $this->withHeaders([

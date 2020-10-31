@@ -55,7 +55,7 @@ class PostTest extends TestCase
         /** @test */
         public function createPost_Have_jwt()
         {
-            $user = Creator::where('username',"guide725")->first();
+            $user = Creator::where('username',"mohr5")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
                 'Authorization' => 'Bearer '. $token,
@@ -73,7 +73,7 @@ class PostTest extends TestCase
         /** @test */
         public function createPost_Have_jwt_TitleLen_lessthan3()
         {
-            $user = Creator::where('username',"guide725")->first();
+            $user = Creator::where('username',"mohr5")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
             'Authorization' => 'Bearer '. $token,
@@ -93,7 +93,7 @@ class PostTest extends TestCase
         /** @test */
         public function createPost_Have_jwt_contentLen_lessthan3()
         {
-            $user = Creator::where('username',"guide725")->first();
+            $user = Creator::where('username',"mohr5")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
                 'Authorization' => 'Bearer '. $token,
@@ -124,7 +124,7 @@ class PostTest extends TestCase
         /** @test */
         public function publishPost_Have_jwt()
         {
-            $user = Creator::where('username',"guide725")->first();
+            $user = Creator::where('username',"mohr5")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
                 'Authorization' => 'Bearer '. $token,
@@ -139,7 +139,7 @@ class PostTest extends TestCase
         /** @test */
         public function publishPost_Have_jwt_No_Data()
         {
-            $user = Creator::where('username',"guide725")->first();
+            $user = Creator::where('username',"mohr5")->first();
             $token = JWTAuth::fromUser($user);
             $response = $this->withHeaders([
                 'Authorization' => 'Bearer '. $token,
