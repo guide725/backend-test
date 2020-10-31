@@ -3,7 +3,6 @@
     <li>cd backend-test</li>
     <li><b>command : </b> cp env-example .env </li>
     <li><b>command : </b> docker-compose up -d  </li>
-    <li><b>command : </b> docker-compose up -d  </li>
     <li><b>command : </b> docker-compose exec app bash</li>
     <li><b>command (To create JWT:KEY , generate APP:KEY , run unit test): </b> php artisan jwt:secret && php artisan key:generate && php artisan test</li>
 </ul>
